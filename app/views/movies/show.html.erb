@@ -19,7 +19,18 @@
 
     <h3>Total Gross</h3>
     <p>
-      <%= @movie.total_gross %>
+      <%= format_total_gross(@movie) %>
+    </p>
+
+    <% if @movie.reviews.any? %>
+      <h3>Reviews</h3>
+      <p><%= link_to pluralize( @movie.reviews.count, "review"),
+              movie_reviews_path(@movie) %><p>
+    <% end %>
+
+    <h3>Average Review</h3>
+    <p>
+      <%= format_average_stars(@movie) %>
     </p>
 
   <footer>
